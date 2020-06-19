@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
+    <style>
+        input:invalid {
+            border: 2px solid red;
+        }
+        input:valid {
+            border: 2px solid green;
+        }
+    </style>
+  </head>
+  <body>
+    <form method="post" enctype="multipart/form-data">
+        <div>
+            <label>Имя</label><br />
+            <input type="text" name="userName" required placeholder="Homer"/><br /><br />
+            <label>Возраст</label><br />
+            <input type="number" name="userAge" required/><br /><br />
+            <label>Номер телефона (29xxxxxxx, 33xxxxxxx, 44xxxxxxx, 25xxxxxxx)</label><br />
+            +375  <input type="tel" id="phone" name="userNumber" placeholder="290000000" pattern='(29|25|44|33)\d{7}' required><br /><br />
+            <label for="file">Загрузите Вашу фотографию </label> <br /><br />
+            <input type="file" id="file" name="myFile"><br /><br />
+        </div>
+        <div>
+            <button>Отправить</button>
+        </div>
+    </form>
+    <script>
+        let tel = document.getElementById("number");
+        tel.addEventListener("input", function (event) {
+            if (tel.validity.patternMismatch) {
+                tel.setCustomValidity("Укажите код вашего оператора в формате (29, 25, 33 или 44)");
+            }
+        });
+    </script>
+  </body>
+</html>
